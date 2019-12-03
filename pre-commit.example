@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Example pre-commit to run istioctl analyze on commit. To use, add to your git
+# precommit hook via `ln -s pre-commit.example .git/hooks/pre-commit`.
+
+# Path to istioctl - replace with hardcoded path if you want to use a different binary.
+ISTIOCTL=istioctl
+
+if ! [ -x "$(command -v $ISTIOCTL)" ]; then
+    echo "$ISTIOCTL command not found. Either add it to your path, or modify"
+    echo "your pre-commit hook to specify the absolute path."
+    exit 1
+fi
+
+find . \
+    -type f \
+    -name \*.yaml \
+    ! -path './istio-control-plane/istio-1.4.0.yaml' \ # https://github.com/istio/istio/issues/19336
+    -print0 | xargs -0 $ISTIOCTL experimental analyze
