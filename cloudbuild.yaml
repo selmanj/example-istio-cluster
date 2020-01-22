@@ -1,6 +1,5 @@
 steps:
 - name: 'istio/istioctl:1.5.0-alpha.0'
   args: 
-    - 'bash'
-    - find ./config -type f | xargs istioctl analyze
+    - analyze ./config
   timeout: 300s
