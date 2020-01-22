@@ -1,11 +1,6 @@
 steps:
-- name: 'ubuntu'
+- name: 'istio/istioctl:1.5.0-alpha.0'
   args: 
     - 'bash'
-    - '-xe'
-    - '-c'
-    - |
-      apt-get update && apt-get install -y curl
-      curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.4.0 sh -
-      find ./config -type f | xargs ./istio-1.4.0/bin/istioctl x analyze
+    - find ./config -type f | xargs istioctl analyze
   timeout: 300s
