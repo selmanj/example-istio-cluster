@@ -1,5 +1,7 @@
 steps:
 - name: 'istio/istioctl:1.5.0-alpha.0'
+  entrypoint: bash
   args: 
-    - analyze ./config
+    - '-c'
+    - 'find config -type f -name \*.yaml ! -path "config/istio-control-plane/istio-1.4.0.yaml" -print0 | xargs -0 istioctl analyze'
   timeout: 300s
