@@ -3,5 +3,5 @@ steps:
   entrypoint: bash
   args: 
     - '-c'
-    - 'find config -type f -name \*.yaml ! -path "config/istio-control-plane/istio-1.4.0.yaml" -print0 | xargs -0 istioctl analyze'
+    - 'find cluster -type f -name \*.yaml -print0 | xargs -0 istioctl analyze'
   timeout: 300s

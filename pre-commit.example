@@ -12,8 +12,7 @@ if ! [ -x "$(command -v $ISTIOCTL)" ]; then
     exit 1
 fi
 
-find config \
+find cluster \
     -type f \
     -name \*.yaml \
-    ! -path 'config/istio-control-plane/istio-1.4.0.yaml' \ # https://github.com/istio/istio/issues/19336
-    -print0 | xargs -0 $ISTIOCTL experimental analyze
+    -print0 | xargs -0 $ISTIOCTL analyze
