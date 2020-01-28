@@ -11,4 +11,4 @@ jobs:
     runs-on: [ubuntu-latest]
 
     steps:
-    - uses: istio/istioctl:1.5.0-alpha.0
+    - uses: ./.github/actions/analyze
