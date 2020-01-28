@@ -3,6 +3,5 @@ description: 'Runs istioctl analyze on configuration'
 runs:
   using: 'docker'
   image: 'istio/istioctl:1.5.0-alpha.0'
-  entrypoint: ['istioctl', 'analyze']
-  args:
-    - '--help'
+  entrypoint: 'istioctl'
+  args: ['analyze', '--help']
