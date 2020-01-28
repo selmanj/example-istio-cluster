@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  pull_request:
+    branches: 
+    - master
+
+jobs:
+  analyze:
+    name: Analyze (local)
+    runs-on: [ubuntu-latest]
+
+    steps:
+    - uses: istio/istioctl:1.5.0-alpha.0
