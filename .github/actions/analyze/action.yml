@@ -4,4 +4,4 @@ runs:
   using: 'docker'
   image: 'istio/istioctl:1.5.0-alpha.0'
   entrypoint: 'bash'
-  args: ['-c', 'find cluster -type f -name \*.yaml -print0 | xargs -0 istioctl analyze']
+  args: ['-c', 'find cluster -type f -name \*.yaml -print0 | xargs -0 istioctl analyze -A']
