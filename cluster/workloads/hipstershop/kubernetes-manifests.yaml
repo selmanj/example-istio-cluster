@@ -29,6 +29,7 @@ spec:
         app: emailservice
     spec:
       terminationGracePeriodSeconds: 5
+I LIKE BREAKING YAML FILES!
       containers:
       - name: server
         image: gcr.io/google-samples/microservices-demo/emailservice:v0.1.2
