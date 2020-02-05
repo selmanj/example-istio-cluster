@@ -9,4 +9,4 @@ runs:
   - |
     find cluster -type f -name \*.yaml -print0 \
       | xargs -0 istioctl analyze -A -d \
-      | sed -e 's/^Warn/::warning Warn/' -e 's/^Error/::error Error/'
+      | sed -e 's/^Warn/::warning:: Warn/' -e 's/^Error/::error:: Error/'
