@@ -1,7 +1,0 @@
-name: 'istioctl analyze'
-description: 'Runs istioctl analyze on configuration'
-runs:
-  using: 'docker'
-  image: 'istio/istioctl:1.5.0-alpha.0'
-  entrypoint: 'bash'
-  args: ['-c', 'find cluster -type f -name \*.yaml -print0 | xargs -0 istioctl analyze -A']
