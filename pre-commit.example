@@ -6,9 +6,8 @@
 # Path to istioctl - replace with hardcoded path if you want to use a different binary.
 ISTIOCTL=istioctl
 
-if ! [ -x "$(command -v $ISTIOCTL)" ]; then
-    echo "$ISTIOCTL command not found. Either add it to your path, or modify"
-    echo "your pre-commit hook to specify the absolute path."
+if ! [ -x "`command -v $ISTIOCTL`" ]; then
+    echo "$ISTIOCTL command not found. Either add it to your path, or modify your pre-commit hook to specify the absolute path."
     exit 1
 fi
 
