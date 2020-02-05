@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: selmanj/istioctl-analyze-action@v1.0-alpha.1
+    - uses: selmanj/istioctl-analyze-action@master
       with:
         configDir: cluster/
         repoToken: ${{ secrets.GITHUB_TOKEN }}
