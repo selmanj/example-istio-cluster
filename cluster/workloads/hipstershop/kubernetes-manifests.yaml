@@ -24,6 +24,8 @@ spec:
     matchLabels:
       app: emailservice
   template:
+  
+BREAK AGAIN  
     metadata:
       labels:
         app: emailservice
