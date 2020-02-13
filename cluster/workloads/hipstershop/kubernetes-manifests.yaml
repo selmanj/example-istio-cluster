@@ -449,6 +449,8 @@ kind: Deployment
 metadata:
   name: loadgenerator
   namespace: hipster
+  annotations:
+    galley.istio.io/analyze-suppress: IST0117
 spec:
   selector:
     matchLabels:
