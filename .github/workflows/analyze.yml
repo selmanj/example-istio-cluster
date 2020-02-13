@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  analyze:
+  analyze-local:
     name: Analyze (local)
     runs-on: [ubuntu-latest]
 
@@ -16,3 +16,18 @@ jobs:
       with:
         configDir: cluster/
         repoToken: ${{ secrets.GITHUB_TOKEN }}
+  analyze-remote:
+    name: Analyze (live cluster)
+    runs-on: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: selmanj/istioctl-analyze-gke-action@master
+      with:
+        configDir: cluster/
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        gcpCredentials: ${{ secrets.gcp_creds }}
+        projectName: jsselman-dev
+        clusterName: example-istio-cluster
+        zone: us-west1-b
+      
