@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Example pre-commit to run istioctl analyze on commit. To use, add to your git
 # precommit hook via `ln -s ../../pre-commit.example .git/hooks/pre-commit`.
  
 # Path to istioctl - replace with hardcoded path if you want to use a different binary.
 ISTIOCTL=$HOME/bin/istioctl-master
+# Failure threshhold - valid values are Info/Warn/Error
+FAILURE_THRESHHOLD=Info
 
 if ! [ -x "$(command -v $ISTIOCTL)" ]; then
     echo "$ISTIOCTL command not found. Either add it to your path, or modify"
@@ -12,4 +14,7 @@ if ! [ -x "$(command -v $ISTIOCTL)" ]; then
     exit 1
 fi
 
-$ISTIOCTL analyze -R cluster/ --use-kube=false --all-namespaces
+$ISTIOCTL analyze -R cluster/ \
+    --use-kube=false \
+    --all-namespaces \
+    --failure-threshold $FAILURE_THRESHHOLD
