@@ -2,16 +2,14 @@
 #
 # Example pre-commit to run istioctl analyze on commit. To use, add to your git
 # precommit hook via `ln -s pre-commit.example .git/hooks/pre-commit`.
-
+ 
 # Path to istioctl - replace with hardcoded path if you want to use a different binary.
-ISTIOCTL=istioctl
+ISTIOCTL=$HOME/bin/istioctl-master
 
-if ! [ -x "`command -v $ISTIOCTL`" ]; then
-    echo "$ISTIOCTL command not found. Either add it to your path, or modify your pre-commit hook to specify the absolute path."
+if ! [ -x "$(command -v $ISTIOCTL)" ]; then
+    echo "$ISTIOCTL command not found. Either add it to your path, or modify"
+    echo "your pre-commit hook to specify the absolute path."
     exit 1
 fi
 
-find cluster \
-    -type f \
-    -name \*.yaml \
-    -print0 | xargs -0 $ISTIOCTL analyze
+$ISTIOCTL analyze -R cluster/ --use-kube=false --all-namespaces
