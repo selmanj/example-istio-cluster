@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Example pre-commit to run istioctl analyze on commit. To use, add to your git
-# precommit hook via `ln -s pre-commit.example .git/hooks/pre-commit`.
+# precommit hook via `ln -s ../../pre-commit.example .git/hooks/pre-commit`.
  
 # Path to istioctl - replace with hardcoded path if you want to use a different binary.
 ISTIOCTL=$HOME/bin/istioctl-master
