@@ -5,8 +5,8 @@
  
 # Path to istioctl - replace with hardcoded path if you want to use a different binary.
 ISTIOCTL=$HOME/bin/istioctl-master
-# Failure threshhold - valid values are Info/Warn/Error
-FAILURE_THRESHHOLD=Info
+# Failure threshold - valid values are Info/Warn/Error
+FAILURE_THRESHOLD=Info
 
 if ! [ -x "$(command -v $ISTIOCTL)" ]; then
     echo "$ISTIOCTL command not found. Either add it to your path, or modify"
@@ -17,4 +17,4 @@ fi
 $ISTIOCTL analyze -R cluster/ \
     --use-kube=false \
     --all-namespaces \
-    --failure-threshold $FAILURE_THRESHHOLD
+    --failure-threshold $FAILURE_THRESHOLD
