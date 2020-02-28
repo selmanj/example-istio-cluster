@@ -14,7 +14,7 @@ if ! [ -x "$(command -v $ISTIOCTL)" ]; then
     exit 1
 fi
 
-$ISTIOCTL analyze -R cluster/ \
+$ISTIOCTL analyze --recursive cluster/ \
     --use-kube=false \
     --all-namespaces \
     --failure-threshold $FAILURE_THRESHOLD
